@@ -5,7 +5,7 @@
 Summary:	Filesystem that stores data in Google Storage, Amazon S3 etc
 Name:		s3ql
 Version:	2.8.1
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Applications/System
 Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz2
@@ -16,6 +16,7 @@ BuildRequires:	python3-apsw
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 BuildRequires:	python3-dugong
+BuildRequires:	python3-llfuse
 BuildRequires:	python3-modules
 BuildRequires:	rpm-pythonprov
 Requires:	python3-Crypto
