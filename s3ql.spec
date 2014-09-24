@@ -4,26 +4,28 @@
 
 Summary:	Filesystem that stores data in Google Storage, Amazon S3 etc
 Name:		s3ql
-Version:	2.8.1
-Release:	2
+Version:	2.11.1
+Release:	1
 License:	GPL v3
 Group:		Applications/System
 Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	b0c173fa97a0b4b77caa3fd66022f228
+# Source0-md5:	f2af113cf1ee7cad98829cf0a972c8e4
 URL:		https://bitbucket.org/nikratio/s3ql/
 BuildRequires:	python3-Crypto
 BuildRequires:	python3-apsw
+BuildRequires:	python3-defusedxml
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
-BuildRequires:	python3-dugong
+BuildRequires:	python3-dugong >= 3.2
 BuildRequires:	python3-llfuse
-BuildRequires:	python3-modules
+BuildRequires:	python3-modules >= 3.3
 BuildRequires:	rpm-pythonprov
 Requires:	python3-Crypto
 Requires:	python3-apsw
-Requires:	python3-dugong
+Requires:	python3-defusedxml
+Requires:	python3-dugong >= 3.2
 Requires:	python3-llfuse
-Requires:	python3-modules
+Requires:	python3-modules >= 3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -55,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CREDITS.txt Changes.txt INSTALL.txt README.rst
+%doc Changes.txt README.rst
 %attr(755,root,root) %{_bindir}/fsck.s3ql
 %attr(755,root,root) %{_bindir}/mkfs.s3ql
 %attr(755,root,root) %{_bindir}/mount.s3ql
