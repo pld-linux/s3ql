@@ -12,19 +12,19 @@ Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz
 # Source0-md5:	f2af113cf1ee7cad98829cf0a972c8e4
 URL:		https://bitbucket.org/nikratio/s3ql/
 BuildRequires:	python3-Crypto
-BuildRequires:	python3-apsw
+BuildRequires:	python3-apsw >= 3.7.0
 BuildRequires:	python3-defusedxml
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 BuildRequires:	python3-dugong >= 3.2
-BuildRequires:	python3-llfuse
+BuildRequires:	python3-llfuse >= 0.39
 BuildRequires:	python3-modules >= 3.3
 BuildRequires:	rpm-pythonprov
 Requires:	python3-Crypto
-Requires:	python3-apsw
+Requires:	python3-apsw >= 3.7.0
 Requires:	python3-defusedxml
 Requires:	python3-dugong >= 3.2
-Requires:	python3-llfuse
+Requires:	python3-llfuse >= 0.39
 Requires:	python3-modules >= 3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
