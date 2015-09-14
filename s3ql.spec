@@ -20,6 +20,7 @@ BuildRequires:	python3-dugong >= 3.2
 BuildRequires:	python3-llfuse >= 0.39
 BuildRequires:	python3-modules >= 3.3
 BuildRequires:	rpm-pythonprov
+%{?with_tests:BuildRequires:	python3-requests}
 Requires:	python3-Crypto
 Requires:	python3-apsw >= 3.7.0
 Requires:	python3-defusedxml
