@@ -5,11 +5,11 @@
 Summary:	Filesystem that stores data in Google Storage, Amazon S3 etc
 Name:		s3ql
 Version:	2.11.1
-Release:	5
+Release:	6
 License:	GPL v3
 Group:		Applications/System
 Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	f2af113cf1ee7cad98829cf0a972c8e4
+# Source0-md5:	8d7f00e6af7013261288a94ac93f8bc1
 URL:		https://bitbucket.org/nikratio/s3ql/
 BuildRequires:	python3-Crypto
 BuildRequires:	python3-apsw >= 3.7.0
@@ -40,18 +40,13 @@ FreeBSD or OS-X.
 %setup -q
 
 %build
-CC="%{__cc}" \
-CFLAGS="%{rpmcflags}" \
-%{__python3} setup.py build --build-base build-3 %{?with_tests:test}
+%{py3_build} \
+	%{?with_tests:test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python3} setup.py \
-	build --build-base build-3 \
-	install --skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%{py3_install}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
