@@ -9,7 +9,7 @@ Release:	6
 License:	GPL v3
 Group:		Applications/System
 Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	8d7f00e6af7013261288a94ac93f8bc1
+# Source0-md5:	f2af113cf1ee7cad98829cf0a972c8e4
 URL:		https://bitbucket.org/nikratio/s3ql/
 BuildRequires:	python3-Crypto
 BuildRequires:	python3-apsw >= 3.7.0
