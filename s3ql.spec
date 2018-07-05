@@ -4,14 +4,15 @@
 
 Summary:	Filesystem that stores data in Google Storage, Amazon S3 etc
 Name:		s3ql
-Version:	2.11.1
-Release:	7
+Version:	2.28
+Release:	1
 License:	GPL v3
 Group:		Applications/System
 Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	f2af113cf1ee7cad98829cf0a972c8e4
+# Source0-md5:	3533a5608ce009a6b834853c7fc4cae4
 URL:		https://bitbucket.org/nikratio/s3ql/
 BuildRequires:	python3-Crypto
+BuildRequires:	python3-Cython
 BuildRequires:	python3-apsw >= 3.7.0
 BuildRequires:	python3-defusedxml
 BuildRequires:	python3-devel
@@ -40,6 +41,8 @@ FreeBSD or OS-X.
 %setup -q
 
 %build
+cython3 src/s3ql/deltadump.pyx
+
 %{py3_build} \
 	%{?with_tests:test}
 
