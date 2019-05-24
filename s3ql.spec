@@ -19,7 +19,7 @@ BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 BuildRequires:	python3-dugong >= 3.2
 BuildRequires:	python3-llfuse >= 0.39
-BuildRequires:	python3-modules >= 3.3
+BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	rpm-pythonprov
 %{?with_tests:BuildRequires:	python3-requests}
 Requires:	python3-Crypto
@@ -27,7 +27,7 @@ Requires:	python3-apsw >= 3.7.0
 Requires:	python3-defusedxml
 Requires:	python3-dugong >= 3.2
 Requires:	python3-llfuse >= 0.39
-Requires:	python3-modules >= 3.3
+Requires:	python3-modules >= 1:3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
