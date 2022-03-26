@@ -5,7 +5,7 @@
 Summary:	Filesystem that stores data in Google Storage, Amazon S3 etc
 Name:		s3ql
 Version:	2.28
-Release:	6
+Release:	7
 License:	GPL v3
 Group:		Applications/System
 Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz2
