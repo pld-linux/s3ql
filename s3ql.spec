@@ -16,7 +16,6 @@ BuildRequires:	python3-Cython
 BuildRequires:	python3-apsw >= 3.7.0
 BuildRequires:	python3-defusedxml
 BuildRequires:	python3-devel
-BuildRequires:	python3-distribute
 BuildRequires:	python3-dugong >= 3.2
 BuildRequires:	python3-llfuse >= 0.39
 BuildRequires:	python3-modules >= 1:3.3
