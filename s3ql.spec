@@ -4,28 +4,31 @@
 
 Summary:	Filesystem that stores data in Google Storage, Amazon S3 etc
 Name:		s3ql
-Version:	2.28
-Release:	10
+Version:	5.2.3
+Release:	1
 License:	GPL v3
 Group:		Applications/System
-Source0:	https://bitbucket.org/nikratio/s3ql/downloads/%{name}-%{version}.tar.bz2
-# Source0-md5:	3533a5608ce009a6b834853c7fc4cae4
-URL:		https://bitbucket.org/nikratio/s3ql/
+Source0:	https://github.com/s3ql/s3ql/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	b0b2397681fa1bb1a91c49eeb6cb78f3
+URL:		https://github.com/s3ql/s3ql/
 BuildRequires:	python3-Crypto
 BuildRequires:	python3-Cython
 BuildRequires:	python3-apsw >= 3.7.0
 BuildRequires:	python3-defusedxml
 BuildRequires:	python3-devel
 BuildRequires:	python3-dugong >= 3.2
-BuildRequires:	python3-llfuse >= 0.39
+BuildRequires:	python3-pyfuse3
 BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	rpm-pythonprov
-%{?with_tests:BuildRequires:	python3-requests}
+%if %{with tests}
+BuildRequires:	python3-pytest-trio
+BuildRequires:	python3-requests
+%endif
 Requires:	python3-Crypto
 Requires:	python3-apsw >= 3.7.0
 Requires:	python3-defusedxml
 Requires:	python3-dugong >= 3.2
-Requires:	python3-llfuse >= 0.39
+Requires:	python3-pyfuse3
 Requires:	python3-modules >= 1:3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,10 +43,16 @@ FreeBSD or OS-X.
 %setup -q
 
 %build
-cython3 src/s3ql/deltadump.pyx
+rm src/s3ql/sqlite3ext.cpp
+cython3 src/s3ql/sqlite3ext.pyx -o src/s3ql/sqlite3ext.cpp
 
-%{py3_build} \
-	%{?with_tests:test}
+%{py3_build}
+
+%if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
+PYTEST_PLUGINS=trio \
+%{__python3} -m pytest tests
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -55,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes.txt README.rst
+%doc AUTHORS README.rst
 %attr(755,root,root) %{_bindir}/fsck.s3ql
 %attr(755,root,root) %{_bindir}/mkfs.s3ql
 %attr(755,root,root) %{_bindir}/mount.s3ql
